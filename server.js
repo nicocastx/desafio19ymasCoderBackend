@@ -1,22 +1,31 @@
+//express
 import express from "express";
-import MongoStore from "connect-mongo";
+
 
 import registerRouter from "./routes/register.js";
 import productosRouter from "./routes/productos.js";
 import testRouter from "./routes/tests.js";
 
 import handlebars from "express-handlebars";
+
 import dotenv from "dotenv";
+
+//session
 import session from "express-session";
 import passport from "passport";
+import MongoStore from "connect-mongo";
+
 import { conexionMDB } from "./optionsmdb.js";
 
+//socket y http
 import { createServer } from "http";
 import { Server } from "socket.io";
 
+//services
 import prodService from "./services/productos.js";
 import msjService from "./services/mensajes.js";
 
+//logger
 import loggerInfo from "./routes/middlewares/loggerInfo.js";
 import logger from "./logger.js";
 
@@ -94,7 +103,7 @@ app.use(passport.session());
 
 //#region Socket
 io.on("connection", async (socket) => {
-  console.log("Nuevo Cliente conectado");
+  logger.info("Nuevo Cliente conectado");
 
   socket.emit("productos", await prodService.listarProductos());
 
@@ -114,18 +123,18 @@ io.on("connection", async (socket) => {
 //#endregion Socket
 
 if (MODO === "cluster" && cluster.isPrimary) {
-  console.log(numCPUs);
-  console.log(`Maestro ejecutado con el ID: ${process.pid}`);
+  logger.info(numCPUs);
+  logger.info(`Maestro ejecutado con el ID: ${process.pid}`);
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
   }
   cluster.on("exit", (worker) => {
-    console.log(
+    logger.info(
       `Worker ${worker.process.pid} died: ${new Date().toLocaleString()}`
     );
   });
 } else {
-  console.log(`El proceso worker se inicio en ${process.pid}`);
+  logger.info(`El proceso worker se inicio en ${process.pid}`);
   app.use("/user", loggerInfo.loggerInfo, registerRouter);
 
   app.use("/", loggerInfo.loggerInfo, productosRouter);
