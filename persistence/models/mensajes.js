@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const mensjCol = "mensajes";
 
 const msjSchema = mongoose.Schema({
+  id: {type: String},
   author: {
     mail: String,
     nombre: String,

@@ -1,5 +1,8 @@
-import db from "../persistence/mensajes.js";
+import MsjsRepo from "../persistence/repos/MsjsRepo.js";
+//import db from "../persistence/mensajes.js";
 import { normalize, schema } from "normalizr";
+
+const db = new MsjsRepo('mensajes')
 
 async function listarTodos() {
   return await db.getMensajes();
@@ -32,7 +35,7 @@ const schMsjs = new schema.Entity("mensajes", {
   const msjsNotNorm = {
     id: "1",
     mensajes: mensajes.map((msj) => {
-      return { ...msj._doc, id: msj._id.toString() };
+      return { ...msj, id: msj._id.toString()};
     }),
   };
 
