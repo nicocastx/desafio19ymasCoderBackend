@@ -1,4 +1,7 @@
-import db from '../persistence/register.js'
+import UsersRepo from "../persistence/repos/UsersRepo.js"
+//import db from '../persistence/register.js'
+
+const db = new UsersRepo()
 
 async function listarUsers(){
   return await db.listarUsers()

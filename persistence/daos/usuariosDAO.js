@@ -8,7 +8,6 @@ import formatDTO from "../dtos/usuariosDTO.js";
 export default class UsersDAO {
   async getAll() {
     const data = await userModel.find();
-    console.log(data);
     return formatDTO(data);
   }
 

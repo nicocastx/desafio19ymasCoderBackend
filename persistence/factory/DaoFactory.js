@@ -3,6 +3,7 @@ import ProductosDAO from "../daos/productosDAO.js";
 import UsersDAO from "../daos/usuariosDAO.js";
 
 export default class DAOFactory {
+  static dao
   getDao(option) {
     let dao;
     switch (option) {
