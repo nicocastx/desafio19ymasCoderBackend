@@ -3,14 +3,7 @@ import ProductosRepo from "../persistence/repos/ProdsRepo.js"
 
 const db = new ProductosRepo()
 
-try {
-  console.log(await db.getProductos());
-} catch (error) {
-  
-}
-
 async function listarProductos(){
-  console.log(await db.getProductos());
   return await db.getProductos()
 }
 
