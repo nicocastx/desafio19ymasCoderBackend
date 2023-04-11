@@ -3,7 +3,7 @@ import axios from 'axios'
 const url = 'http://localhost:8080/'
 
 const newProducto = {
-  nombre:"tengo este nuevo producto 3",
+  nombre:"Producto en AXIOS",
   url:"https://www.theonering.com/wp-content/uploads/2020/11/gandalf-laughing.jpg",
   precio: 20000
 }
