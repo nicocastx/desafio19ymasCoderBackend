@@ -15,7 +15,7 @@ import session from "express-session";
 import passport from "passport";
 import MongoStore from "connect-mongo";
 
-import { conexionMDB } from "./optionsmdb.js";
+import { conexionMDB } from "./config/optionsmdb.js";
 
 //socket y http
 import { createServer } from "http";

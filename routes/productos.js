@@ -4,6 +4,12 @@ import auth from './middlewares/isAuth.js'
 
 const router = Router()
 
-router.get('/', auth.isAuth, controller.renderPrincipal)
+//router de prueba
+router.get('/', controller.listarProductos)
+router.put('/:id', controller.modificarProducto)
+router.delete('/:id', controller.eliminarProducto)
+router.post('/', controller.agregarProducto)
+
+//router.get('/', auth.isAuth, controller.renderPrincipal)
 
 export default router

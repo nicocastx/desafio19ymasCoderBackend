@@ -17,5 +17,13 @@ export default class ProductosRepo{
     prod.fecha = new Date().toLocaleString()
     return await this.dao.save(prod)
   }
+
+  async borrarProductos(id){
+    return await this.dao.deleteById(id)
+  }
+
+  async modProducto(newProd, id){
+    return await this.dao.updateById(newProd, id)
+  }
    
 }

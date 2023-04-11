@@ -1,4 +1,4 @@
-import MsjsRepo from "../persistence/repos/MsjsRepo.js";
+import MsjsRepo from "../model/repos/MsjsRepo.js";
 //import db from "../persistence/mensajes.js";
 import { normalize, schema } from "normalizr";
 

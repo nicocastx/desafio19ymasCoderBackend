@@ -1,4 +1,4 @@
-import UsersRepo from "../persistence/repos/UsersRepo.js"
+import UsersRepo from "../model/repos/UsersRepo.js"
 //import db from '../persistence/register.js'
 
 const db = new UsersRepo()
