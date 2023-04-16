@@ -37,6 +37,7 @@ const agregarProducto = async (req , res) =>{
 
 const listarProductos = async(req, res) =>{
   const prods = await service.listarProductos()
+  //devuelve una lista de productos
   res.json(prods)
 }
 

@@ -4,21 +4,26 @@ import ProductosRepo from "../model/repos/ProdsRepo.js"
 const db = new ProductosRepo()
 
 async function listarProductos(){
+  //devuelve una lista de productos
   return await db.getProductos()
 }
 
 async function guardarProducto(obj){
   obj.fecha = new Date().toLocaleString()
-  db.guardarProducto(obj)
+  const newProd = await db.guardarProducto(obj)
+  //devuelve el objeto guardado
+  return newProd
 }
 
 async function modificarProducto(newObj, id){
   newObj.fecha = new Date().toLocaleString()
-  db.modProducto(newObj, id)
+  //devuelve el producto con las modificaciones
+  return db.modProducto(newObj, id)
 }
 
 async function eliminarProducto(id){
-  db.borrarProductos(id)
+  //devuelve el producto eliminado
+  return db.borrarProductos(id)
 }
 
 export default{

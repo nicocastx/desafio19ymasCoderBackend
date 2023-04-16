@@ -15,6 +15,7 @@ export default class ProductosRepo{
 
   async guardarProducto(prod){
     prod.fecha = new Date().toLocaleString()
+    //devuelve el producto agregado
     return await this.dao.save(prod)
   }
 

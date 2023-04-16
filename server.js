@@ -1,10 +1,11 @@
 //express
 import express from "express";
 
-
+//routers
 import registerRouter from "./routes/register.js";
 import productosRouter from "./routes/productos.js";
 import testRouter from "./routes/tests.js";
+import graphQLRouter from './controllers/GraphQL.js'
 
 import handlebars from "express-handlebars";
 
@@ -137,7 +138,7 @@ if (MODO === "cluster" && cluster.isPrimary) {
   logger.info(`El proceso worker se inicio en ${process.pid}`);
   app.use("/user", loggerInfo.loggerInfo, registerRouter);
 
-  app.use("/", loggerInfo.loggerInfo, productosRouter);
+  app.use("/", loggerInfo.loggerInfo, new graphQLRouter());
 
   app.use("/test", loggerInfo.loggerInfo, testRouter);
 

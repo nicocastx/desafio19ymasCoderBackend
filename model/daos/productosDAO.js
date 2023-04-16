@@ -11,6 +11,7 @@ export default class ProductosDAO {
     let dataAdd = await prodModel(obj);
     dataAdd = { ...dataAdd._doc, id: dataAdd._id.toString() };
     await prodModel.insertMany(dataAdd);
+    //devuelve el dato guardado
     return formatDTO(dataAdd);
   }
 
@@ -21,11 +22,11 @@ export default class ProductosDAO {
 
   async updateById(newObj, id) {
     const idUpdate = new mongoose.Types.ObjectId(id);
-    return await prodModel.findByIdAndUpdate(idUpdate, newObj);
+    return await prodModel.findByIdAndUpdate(idUpdate, newObj, {new: true});
   }
 
   async deleteById(id) {
-    const data = await prodModel.deleteOne({
+    const data = await prodModel.findByIdAndDelete({
       _id: new mongoose.Types.ObjectId(id),
     });
     return data;

@@ -1,9 +1,10 @@
 class ProductoDTO{
-  constructor({id, nombre, url, precio}){
+  constructor({id, nombre, url, precio,fecha}){
     this.id = id
     this.nombre = nombre
     this.url = url
     this.precio = precio
+    this.fecha = fecha
   }
 }
 
