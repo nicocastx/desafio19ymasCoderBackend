@@ -22,8 +22,8 @@ import prodsAPI from '../services/productos.js'
     }
     type Mutation{
       guardarProducto(datos: ProductoInput):Producto
-      modificarProducto(id: ID!): Producto
-      eliminarProducto: Producto
+      modificarProducto(id: ID!, datos: ProductoInput): Producto
+      eliminarProducto(id: ID!): Producto
     }
   `);
 

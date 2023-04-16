@@ -9,16 +9,16 @@ async function listarProductos(){
 }
 
 async function guardarProducto(obj){
-  obj.fecha = new Date().toLocaleString()
-  const newProd = await db.guardarProducto(obj)
+  const newObj = {...obj.datos, fecha: new Date().toLocaleString()}
+  const newProd = await db.guardarProducto(newObj)
   //devuelve el objeto guardado
   return newProd
 }
 
-async function modificarProducto(newObj, id){
-  newObj.fecha = new Date().toLocaleString()
+async function modificarProducto(obj){
+  const newObj = {...obj.datos, fecha: new Date().toLocaleString()}
   //devuelve el producto con las modificaciones
-  return db.modProducto(newObj, id)
+  return db.modProducto(newObj, obj.id)
 }
 
 async function eliminarProducto(id){
