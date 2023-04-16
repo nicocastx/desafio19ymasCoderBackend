@@ -136,9 +136,12 @@ if (MODO === "cluster" && cluster.isPrimary) {
   });
 } else {
   logger.info(`El proceso worker se inicio en ${process.pid}`);
+  
   app.use("/user", loggerInfo.loggerInfo, registerRouter);
 
-  app.use("/", loggerInfo.loggerInfo, new graphQLRouter());
+  app.use('/graphql', loggerInfo.loggerInfo, new graphQLRouter())
+
+  app.use("/", loggerInfo.loggerInfo, productosRouter);
 
   app.use("/test", loggerInfo.loggerInfo, testRouter);
 
