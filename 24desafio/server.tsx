@@ -14,8 +14,6 @@ app.headers({
   "Content-Type":"text/html"
 })
 
-let color = ""
-
 const colores: Array<String> = []
 
 function addColor(color){
@@ -31,12 +29,13 @@ function addColor(color){
 }
 
 router.get("/", (req: Req, res: Res) => {
+  let color = ""
   if(req.url.search != undefined){
     color = req.url.search.split('=')[1]
   }
   const html = `
   <h1>Hola</h1>
-  <p style="color:#${color};">Ingrese un color para cambiar al html de este texto</p>
+  <p>Ingrese un color para cambiar al html de este texto</p>
   <form action="/" method="GET">
     <label for="textc">Ingrese el color de la letra:</label><br>
     <input type="text" id="textc" name="textc"><br>
